@@ -1,11 +1,12 @@
-node {
-
+pipeline {
+    agent any
+    
     stages {
         stage('Build') {
             steps {
                 echo 'Build the App'
-                 node -v
-                 npm -i
+                sh 'node -v'
+                sh 'npm -i
             }
         }
         stage('Test') {
