@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Build the App'
+                npm i
+                ng build 
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Test the App'
+                ng serve
+            }
+        }   
+        stage('Staging') {
+            steps {
+                echo 'Deploy the App in Staging'
+                git add .
+                git commit -m "build successful"
+                git push -u origin main
+            }
+        }
+    }
+}
