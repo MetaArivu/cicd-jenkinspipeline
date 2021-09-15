@@ -9,7 +9,7 @@ pipeline {
                 sh 'npm -i'
             }
         }
-        stage('Test') {
+        stage('Test1') {
             steps {
                 echo 'Test the App'
             }
