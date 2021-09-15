@@ -18,8 +18,10 @@ pipeline {
         stage('Staging') {
             steps {
                 echo 'Deploy the App in Staging'
+                git init
                 git add .
                 git commit -m "build successful"
+                git remote add origin https://github.com/meta-magic/pipelinetest.git                                      
                 git push -u origin main
             }
         }
