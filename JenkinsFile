@@ -5,6 +5,7 @@ node {
             steps {
                 echo 'Build the App'
                  node -v
+                 npm -i
             }
         }
         stage('Test') {
