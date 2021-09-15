@@ -1,11 +1,10 @@
-pipeline {
-    agent any
+node {
 
     stages {
         stage('Build') {
             steps {
                 echo 'Build the App'
-                sh 'mvn -v'
+                 node -v
             }
         }
         stage('Test') {
