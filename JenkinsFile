@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Build the App'
                 sh 'node -v'
-                sh 'npm -i
+                sh 'npm -i'
             }
         }
         stage('Test') {
