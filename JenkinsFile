@@ -5,13 +5,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build the App'
-                ng build 
+                node -v
+                
             }
         }
         stage('Test') {
             steps {
                 echo 'Test the App'
-                ng serve
             }
         }   
         stage('Staging') {
