@@ -6,7 +6,8 @@ pipeline {
             steps {
                 echo 'Build the App'
                 sh 'node -v'
-                sh 'npm -i'
+                sh 'npm i'
+                sh 'ng build --prod'
             }
         }
         stage('Test1') {
