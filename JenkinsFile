@@ -22,7 +22,7 @@ pipeline {
         }   
         stage('Staging') {
             steps {
-               sshagent(credentials : ['7388cc2c-2890-4309-a147-b91eba2fcde4']) {
+               sshagent(credentials : ['mygithubssh']) {
                 echo 'Deploy the App in Staging'
                 echo "HOME is: $HOME"
                 sh 'git add .'
