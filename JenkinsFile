@@ -24,7 +24,7 @@ pipeline {
             steps {
                 git branch: 'main',
                     url: 'git@github.com:meta-magic/pipelinetest.git',
-            }        
+            } }       
         
         stage('Staging') {
             steps {
