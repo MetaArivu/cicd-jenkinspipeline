@@ -28,6 +28,8 @@ pipeline {
                 echo "HOME is: $HOME"
                 sh 'git config --global credential.helper cache'
                 sh 'git config --global push.default simple'
+                sh ‘git config --global user.email “deepali.arvind@metamagic.in”’
+                sh ‘git config --global user.name “deepali-arvind”’
                 sh 'git add .'
                 sh 'git commit -m "docs"'
                 sh 'git push'
