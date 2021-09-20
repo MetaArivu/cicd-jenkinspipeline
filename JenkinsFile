@@ -17,7 +17,6 @@ pipeline {
             steps {
                 echo 'Test the App'
                 sh 'ls -ltr'
-                sh 'mkdir docs'
                 sh 'cp -rf Docs/HelloM/* docs/'
             }
         }   
