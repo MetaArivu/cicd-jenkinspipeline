@@ -10,7 +10,6 @@ pipeline {
             steps {
                 echo 'Build the App'
                 echo "PATH is: $PATH"
-                sh 'node -v'
                 sh 'npm i'
                 sh 'ng build --prod'
             }
@@ -18,7 +17,6 @@ pipeline {
         stage('Test1') {
             steps {
                 echo 'Test the App'
-                sh 'ls -ltr'
                 sh 'cp -rf Docs/HelloM/* docs/'
             }
         }   
@@ -28,7 +26,7 @@ pipeline {
                 echo "HOME is: $HOME"
                 sh 'git config --global credential.helper cache'
                 sh 'git config --global push.default simple'
-                sh ‘git config --global user.email “deepali.arvind@metamagic.in”’
+                sh ‘{git config --global user.email “deepali.arvind@metamagic.in”}’
                 sh ‘git config --global user.name “deepali-arvind”’
                 sh 'git add .'
                 sh 'git commit -m "docs"'
