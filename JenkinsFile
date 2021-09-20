@@ -9,6 +9,7 @@ pipeline {
                 echo 'Build the App'
                 echo "PATH is: $PATH"
                 sh 'node -v'
+                sh 'npm i'
                 sh 'ng build --prod'
             }
         }
