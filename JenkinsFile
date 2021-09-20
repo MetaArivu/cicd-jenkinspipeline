@@ -17,11 +17,16 @@ pipeline {
             steps {
                 echo 'Test the App'
                 sh 'ls -ltr'
+                sh 'mkdir docs'
+                sh 'cp -rf Docs/HelloM/* docs/'
             }
         }   
         stage('Staging') {
             steps {
                 echo 'Deploy the App in Staging'
+                sh 'git add .'
+                sh 'git commit -m "docs"'
+                sh 'git push'
 
             }
         }
