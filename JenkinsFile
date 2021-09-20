@@ -30,7 +30,7 @@ pipeline {
                 sh 'git config --global user.name "deepali-arvind"'
                 sh 'git add .'
                 sh 'git commit -m "docs"'
-                sh 'git push'
+                sh 'git push origin HEAD:main'
 
             }
         }
