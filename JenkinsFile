@@ -27,7 +27,7 @@ pipeline {
                 echo "HOME is: $HOME"
                 sh 'git add .'
                 sh 'git commit -m "docs"'
-                sh 'git ls-remote -h --refs git@github.com:meta-magic/pipelineyesy.git main | git push HEAD:main' 
+                sh 'git ls-remote -h --refs git@github.com:meta-magic/pipelinetest.git main | git push HEAD:main' 
                 }
 
             }
