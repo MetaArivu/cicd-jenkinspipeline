@@ -19,7 +19,13 @@ pipeline {
                 echo 'Test the App'
                 sh 'cp -rf Docs/HelloM/* docs/'
             }
-        }   
+        }
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'git@github.com:meta-magic/pipelinetest.git',
+            }        
+        
         stage('Staging') {
             steps {
                sshagent(credentials : ['mygithubssh']) {
