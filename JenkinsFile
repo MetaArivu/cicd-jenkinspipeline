@@ -2,6 +2,8 @@ pipeline {
     agent any
      environment {
     PATH = "/usr/local/bin/:$PATH"
+    HOME="/var/root/.jenkins"
+
   }
     stages {
         stage('Build') {
@@ -23,6 +25,7 @@ pipeline {
         stage('Staging') {
             steps {
                 echo 'Deploy the App in Staging'
+                echo "HOME is: $HOME"
                 sh 'git config --global credential.helper cache'
                 sh 'git config --global push.default simple'
                 sh 'git add .'
