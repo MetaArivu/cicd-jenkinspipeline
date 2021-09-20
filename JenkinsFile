@@ -23,6 +23,8 @@ pipeline {
         stage('Staging') {
             steps {
                 echo 'Deploy the App in Staging'
+                sh 'git config --global credential.helper cache'
+                sh 'git config --global push.default simple'
                 sh 'git add .'
                 sh 'git commit -m "docs"'
                 sh 'git push'
