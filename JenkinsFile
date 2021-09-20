@@ -25,8 +25,6 @@ pipeline {
                sshagent(credentials : ['7388cc2c-2890-4309-a147-b91eba2fcde4']) {
                 echo 'Deploy the App in Staging'
                 echo "HOME is: $HOME"
-                sh 'git config --global user.email "deepali.arvind@metamagic.in"'
-                sh 'git config --global user.name "deepali-arvind"'
                 sh 'git add .'
                 sh 'git commit -m "docs"'
                 sh 'git push origin HEAD:main'
