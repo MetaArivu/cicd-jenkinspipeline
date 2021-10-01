@@ -13,12 +13,7 @@ pipeline {
                     credentialsId: 'mygithubssh'
             }
             }
-              stage('SonarQube analysis') 
-                  steps {
-    withSonarQubeEnv('SonarQube') { // If you have configured more than one global server connection, you can specify its name
-      println ${env.SONAR_HOST_URL} 
-    }
-  }
+             
         stage('Build') {
             steps {
                 echo 'Build the App'
@@ -35,7 +30,11 @@ pipeline {
         }     
         
         stage('Staging') {
-            steps {
+        input{
+    message "Do you want to proceed for production deployment?"
+  }
+              steps {
+
                 echo 'Deploy the App in Staging'
                 echo "HOME is: $HOME"
                 sh 'git add docs'
