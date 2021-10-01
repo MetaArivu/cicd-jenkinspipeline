@@ -25,7 +25,7 @@ pipeline {
         stage('Test1') {
             steps {
                 echo 'Test the App'
-                sh 'rm -rf Docs'
+                sh 'ls -ltr'
             }
         }     
         
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 echo 'Deploy the App in Staging'
                 echo "HOME is: $HOME"
-                sh 'git add .'
+                sh 'git add docs'
                 sh 'git commit -m "docs"'
                 sshagent(credentials : ['mygithubssh']) {               
                     sh 'git push -f origin HEAD:main'
