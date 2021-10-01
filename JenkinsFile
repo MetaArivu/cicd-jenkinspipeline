@@ -12,6 +12,7 @@ pipeline {
                     url: 'git@github.com:meta-magic/pipelinetest.git',
                     credentialsId: '869d28a2-4afd-4ae8-bb61-4fc0f2c8dd4a'
             }
+            }
 
         stage('Build') {
             steps {
