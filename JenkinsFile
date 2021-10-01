@@ -28,7 +28,7 @@ pipeline {
                 sh 'git add .'
                 sh 'git commit -m "docs"'
                 sshagent(credentials : ['mygithubssh']) {               
-                sh 'git ls-remote -h --refs git@github.com:meta-magic/pipelinetest.git main |awk "{print $1}"'
+                    sh 'git push -f origin HEAD:main'
                 }
 
             }
