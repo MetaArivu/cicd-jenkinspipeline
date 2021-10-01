@@ -25,6 +25,7 @@ pipeline {
         stage('Test1') {
             steps {
                 echo 'Test the App'
+                sh 'mkdir docs'
                 sh 'cp -rf Docs/HelloM/* docs/'
             }
         }     
