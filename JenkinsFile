@@ -9,7 +9,7 @@ pipeline {
        stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'git@github.com:meta-magic/pipelinetest.git',
+                    url: 'git@github.com:MetaArivu/cicd-jenkinspipeline.git',
                     credentialsId: 'mygithubssh'
             }
             }
