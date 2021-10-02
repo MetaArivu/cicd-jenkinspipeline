@@ -26,7 +26,6 @@ pipeline {
             steps {
                 echo 'Test the App'
                 sh 'ls -ltr'
-                sh 'pwd'
             }
         }     
         
@@ -43,18 +42,7 @@ pipeline {
 
             }
         }
-        
-        
-       stage('Checkoutuat') {
-            steps {
-                git branch: 'main',
-                    url: 'git@github.com:MetaArivu/cicd-jenkinspipelineuat.git',
-                    credentialsId: 'mygithubssh'
-            }}
-     
-       stage('deployuat') {
-            steps { sh 'ls -ltr'
-            }}       
+          
             
     }
 }
