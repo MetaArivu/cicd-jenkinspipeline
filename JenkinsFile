@@ -43,5 +43,13 @@ pipeline {
 
             }
         }
+        
+        
+       stage('Checkoutuat') {
+            steps {
+                git branch: 'main',
+                    url: 'git@github.com:MetaArivu/cicd-jenkinspipelineuat.git',
+                    credentialsId: 'mygithubssh'
+            }
     }
 }
