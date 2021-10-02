@@ -51,5 +51,10 @@ pipeline {
                     url: 'git@github.com:MetaArivu/cicd-jenkinspipelineuat.git',
                     credentialsId: 'mygithubssh'
             }}
+     
+       stage('deployuat') {
+            steps { sh 'ls -ltr'
+            }}       
+            
     }
 }
