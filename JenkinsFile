@@ -40,7 +40,7 @@ pipeline {
                 sh 'git add docs'
                 sh 'git commit -m "docs"'
                 sshagent(credentials : ['mygithubssh']) {               
-                    sh 'git push -f origin HEAD:main'
+                    sh 'git push -f origin HEAD:v1'
                 }
 
             }
