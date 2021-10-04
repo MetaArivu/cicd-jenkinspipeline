@@ -52,7 +52,6 @@ pipeline {
               steps {
                 echo 'Deploy the App in uat'
                 echo "HOME is: $HOME"
-                sh 'mkdir docs/uat/'
                 sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipeline/dist/HelloM/* docs/uat/'
                 sh 'git add docs'
                 sh 'git commit -m "docs"'
@@ -69,8 +68,7 @@ pipeline {
               steps {
                 echo 'Deploy the App in uat'
                 echo "HOME is: $HOME"
-                sh 'mkdir docs/prod/'
-                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipeline/docs/HelloM/* docs/prod/'
+                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipeline/dist/HelloM/* docs/prod/'
                 sh 'git add docs'
                 sh 'git commit -m "docs"'
                 sshagent(credentials : ['mygithubssh']) {               
