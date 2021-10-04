@@ -39,7 +39,7 @@ pipeline {
                 echo 'Test the App'
                 sh 'ls -ltr'
                 sh 'rm -rf docs/HelloM/*'
-                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipelinemultibranch_v1/dist/HelloM/* docs/HelloM/'
+                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipelinemultibranch_/dist/HelloM/* docs/HelloM/'
 
             }
         }     
@@ -68,7 +68,7 @@ pipeline {
               steps {
                 echo 'Deploy the App in uat'
                 echo "HOME is: $HOME"
-                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipelinemultibranch_v1/dist/HelloM/* docs/uat/'
+                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipelinemultibranch_/dist/HelloM/* docs/uat/'
                 sh 'git add docs'
                 sh 'git commit -m "docs"'
                 sshagent(credentials : ['mygithubssh']) {               
@@ -86,7 +86,7 @@ pipeline {
               steps {
                 echo 'Deploy the App in uat'
                 echo "HOME is: $HOME"
-                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipelinemultibranch_v1/dist/HelloM/* docs/prod/'
+                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipelinemultibranch_/dist/HelloM/* docs/prod/'
                 sh 'git add docs'
                 sh 'git commit -m "docs"'
                 sshagent(credentials : ['mygithubssh']) {               
