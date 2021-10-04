@@ -6,7 +6,9 @@ pipeline {
 
   }
     stages {
-       stage('Checkout') {
+       stage('Checkout main') {
+           when {branch 'main'
+    }
             steps {
                 git branch: 'main',
                     url: 'git@github.com:MetaArivu/cicd-jenkinspipeline.git',
@@ -14,6 +16,16 @@ pipeline {
             }
             }
              
+ 
+       stage('Checkout v1') {
+           when {branch 'v1'
+    }
+            steps {
+                git branch: 'v1',
+                    url: 'git@github.com:MetaArivu/cicd-jenkinspipeline.git',
+                    credentialsId: 'mygithubssh'
+            }
+            }            
         stage('Build') {
             steps {
                 echo 'Build the App'
@@ -27,12 +39,14 @@ pipeline {
                 echo 'Test the App'
                 sh 'ls -ltr'
                 sh 'rm -rf docs/HelloM/*'
-                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipeline/dist/HelloM/* docs/HelloM/'
+                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipelinemultibranch_v1/dist/HelloM/* docs/HelloM/'
 
             }
         }     
         
         stage('Staging') {
+           when {branch 'v1'
+    }
               steps {
 
                 echo 'Deploy the App in Staging'
@@ -48,11 +62,13 @@ pipeline {
           
 
         stage('deployUAT') {
+            when {branch 'main'
+    }
         input{message "Do you want to proceed for uat deployment?" }  
               steps {
                 echo 'Deploy the App in uat'
                 echo "HOME is: $HOME"
-                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipeline/dist/HelloM/* docs/uat/'
+                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipelinemultibranch_v1/dist/HelloM/* docs/uat/'
                 sh 'git add docs'
                 sh 'git commit -m "docs"'
                 sshagent(credentials : ['mygithubssh']) {               
@@ -64,11 +80,13 @@ pipeline {
         
         
         stage('deployPROD') {
+            when {branch 'main'
+    }
         input{message "Do you want to proceed for prod deployment?" }  
               steps {
                 echo 'Deploy the App in uat'
                 echo "HOME is: $HOME"
-                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipeline/dist/HelloM/* docs/prod/'
+                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipelinemultibranch_v1/dist/HelloM/* docs/prod/'
                 sh 'git add docs'
                 sh 'git commit -m "docs"'
                 sshagent(credentials : ['mygithubssh']) {               
