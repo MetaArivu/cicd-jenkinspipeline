@@ -43,6 +43,39 @@ pipeline {
             }
         }
           
+
+        stage('deployUAT') {
+        input{message "Do you want to proceed for uat deployment?" }  
+              steps {
+                echo 'Deploy the App in uat'
+                echo "HOME is: $HOME"
+                sh 'mkdir docs/uat/'
+                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipeline/docs/HelloM/* docs/uat/'
+                sh 'git add docs'
+                sh 'git commit -m "docs"'
+                sshagent(credentials : ['mygithubssh']) {               
+                    sh 'git push -f origin HEAD:main'
+                }
+
+            }
+        }
+        
+        
+        stage('deployPROD') {
+        input{message "Do you want to proceed for prod deployment?" }  
+              steps {
+                echo 'Deploy the App in uat'
+                echo "HOME is: $HOME"
+                sh 'mkdir docs/prod/'
+                sh 'cp -rf /private/var/root/.jenkins/workspace/node-pipeline/docs/HelloM/* docs/prod/'
+                sh 'git add docs'
+                sh 'git commit -m "docs"'
+                sshagent(credentials : ['mygithubssh']) {               
+                    sh 'git push -f origin HEAD:main'
+                }
+
+            }
+        } 
             
     }
 }
